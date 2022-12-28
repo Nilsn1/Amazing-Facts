@@ -45,6 +45,7 @@ public class DetailActivity extends AppCompatActivity {
     ImageView btnBack, speakbtn, favourite, share, ttsSetting;
     String mPoster, mTitle, mText, mCategory;
     String title;
+    MyDBHelper myDBHelper;
 
     Boolean fav = false;
 
@@ -115,22 +116,7 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
 
-        MyDBHelper myDBHelper = new MyDBHelper(DetailActivity.this);
-        ArrayList<FactsModel> facts = myDBHelper.readData();
-
-        for (int i = 0; i < facts.size(); i++) {
-            title = facts.get(i).title;
-
-            if (mTitle.equals(title)) {
-                ImageViewCompat.setImageTintList(favourite, ColorStateList.valueOf
-                        (ContextCompat.getColor(DetailActivity.this, R.color.primary)));
-                fav = true;
-            } else {
-                ImageViewCompat.setImageTintList(favourite, ColorStateList.valueOf
-                        (ContextCompat.getColor(DetailActivity.this, R.color.ic_color)));
-                fav = false;
-            }
-        }
+        readData();
 
         favourite.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -138,16 +124,18 @@ public class DetailActivity extends AppCompatActivity {
 
                 if (fav) {
                     myDBHelper.deleteData(mTitle);
+                    favourite.setImageResource(R.drawable.ic_like);
                     ImageViewCompat.setImageTintList(favourite, ColorStateList.valueOf
                             (ContextCompat.getColor(DetailActivity.this, R.color.ic_color)));
-                    Toast.makeText(DetailActivity.this, "Deleted", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DetailActivity.this, "Removed from Favourite", Toast.LENGTH_SHORT).show();
                     fav = false;
 
                 } else {
                     myDBHelper.deleteandAdd(mPoster, mCategory, mTitle, mText);
+                    favourite.setImageResource(R.drawable.ic_favourite);
                     ImageViewCompat.setImageTintList(favourite, ColorStateList.valueOf
-                            (ContextCompat.getColor(DetailActivity.this, R.color.primary)));
-                    Toast.makeText(DetailActivity.this, "Added", Toast.LENGTH_SHORT).show();
+                            (ContextCompat.getColor(DetailActivity.this, R.color.red)));
+                    Toast.makeText(DetailActivity.this, "Added to Favourite", Toast.LENGTH_SHORT).show();
                     fav = true;
 
                 }
@@ -178,6 +166,27 @@ public class DetailActivity extends AppCompatActivity {
 //            }
 //        });
 
+    }
+
+    private void readData() {
+        myDBHelper = new MyDBHelper(DetailActivity.this);
+        ArrayList<FactsModel> facts = myDBHelper.readData();
+
+        for (int i = 0; i < facts.size(); i++) {
+            title = facts.get(i).title;
+
+            if (mTitle.equals(title)) {
+                favourite.setImageResource(R.drawable.ic_favourite);
+                ImageViewCompat.setImageTintList(favourite, ColorStateList.valueOf
+                        (ContextCompat.getColor(DetailActivity.this, R.color.red)));
+                fav = true;
+            } else {
+                favourite.setImageResource(R.drawable.ic_like);
+                ImageViewCompat.setImageTintList(favourite, ColorStateList.valueOf
+                        (ContextCompat.getColor(DetailActivity.this, R.color.ic_color)));
+                fav = false;
+            }
+        }
     }
 
     @Override

@@ -93,7 +93,7 @@ public class SettingsFragment extends Fragment {
         btnPrivacy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String url = "https://thenilscreation.blogspot.com/p/billionaire-dreams-privacy.html";
+                String url = "https://thenilscreation.blogspot.com/p/daily-facts-privacy.html";
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse(url));
                 startActivity(intent);
