@@ -65,4 +65,14 @@ public class HomeActivity extends AppCompatActivity {
         ft.commit();
 
     }
+
+    @Override
+    public void onBackPressed() {
+        if (bottomNavigation.getSelectedItemId() == R.id.home) {
+            super.onBackPressed();
+            finish();
+        } else {
+            bottomNavigation.setSelectedItemId(R.id.home);
+        }
+    }
 }
