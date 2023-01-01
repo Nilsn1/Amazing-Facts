@@ -17,7 +17,7 @@
 
         <item
             android:id="@+id/about"
-            android:icon="@drawable/info"
+            android:icon="@drawable/ic_info"
             android:title="About" />
 
         <item

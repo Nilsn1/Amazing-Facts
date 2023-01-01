@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <gradient
-        android:type="radial"
-        android:startColor="#85BCF8"
-        android:endColor="#0277F8"
-        android:gradientRadius="25dp"/>
-    <corners
-        android:radius="100dp"
-        />
+    <solid android:color="@color/btn_background" />
+    <corners android:radius="10dp" />
 </shape>

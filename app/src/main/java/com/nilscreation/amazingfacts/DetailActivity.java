@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -20,6 +21,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
@@ -46,6 +49,7 @@ public class DetailActivity extends AppCompatActivity {
     String mPoster, mTitle, mText, mCategory;
     String title;
     MyDBHelper myDBHelper;
+    SwitchCompat switchMode;
 
     Boolean fav = false;
 
@@ -62,6 +66,9 @@ public class DetailActivity extends AppCompatActivity {
         speakbtn = findViewById(R.id.speak);
         favourite = findViewById(R.id.favourite);
         share = findViewById(R.id.share);
+        switchMode = findViewById(R.id.switchMode);
+
+        nightMode();
 
         Bundle bundle = getIntent().getExtras();
         mPoster = bundle.getString("poster");
@@ -286,6 +293,46 @@ public class DetailActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+    }
+
+    @Override
+    protected void onResume() {
+        nightMode();
+        super.onResume();
+    }
+
+    private void nightMode() {
+        //NIGHT MODE
+        // Saving state of our app using SharedPreferences
+        SharedPreferences sharedPreferences = getSharedPreferences("sharedPrefs", MODE_PRIVATE);
+        final SharedPreferences.Editor editor = sharedPreferences.edit();
+        final boolean isDarkModeOn = sharedPreferences.getBoolean("isDarkModeOn", false);
+
+        // When user reopens the app after applying dark/light mode
+        if (isDarkModeOn) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            switchMode.setChecked(true);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            switchMode.setChecked(false);
+        }
+
+        switchMode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (switchMode.isChecked()) {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    editor.putBoolean("isDarkModeOn", true);
+                    editor.apply();
+                } else {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    // it will set isDarkModeOn
+                    // boolean to false
+                    editor.putBoolean("isDarkModeOn", false);
+                    editor.apply();
+                }
+            }
+        });
     }
 
 }

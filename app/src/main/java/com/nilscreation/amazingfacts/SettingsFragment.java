@@ -104,6 +104,21 @@ public class SettingsFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
+                try {
+                    Intent intent = new Intent(Intent.ACTION_SENDTO);
+                    intent.setData(Uri.parse("mailto:"));
+                    String[] to = {"nilssonawanen1@gmail.com"};
+                    intent.putExtra(Intent.EXTRA_EMAIL, to);
+                    intent.putExtra(Intent.EXTRA_SUBJECT, "EXAMPLE");
+                    intent.putExtra(Intent.EXTRA_TEXT, "TEXT");
+
+                    startActivity(Intent.createChooser(intent, "Send Email"));
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
             }
         });
 

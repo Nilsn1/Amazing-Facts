@@ -50,7 +50,7 @@
                 android:paddingBottom="10dp"
                 android:text="6GB रैम वाला भारत का सबसे सस्ता फोन
 best phone under 10000 budget gaming phone"
-                android:textColor="@color/text_color"
+                android:textColor="@color/primary_text"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -74,7 +74,7 @@ best phone under 10000 budget gaming phone"
                     android:paddingHorizontal="10dp"
                     android:paddingVertical="4dp"
                     android:text="Animals"
-                    android:textColor="@color/text_color"
+                    android:textColor="@color/primary_text"
                     android:textSize="13sp"
                     android:textStyle="bold" />
             </androidx.cardview.widget.CardView>

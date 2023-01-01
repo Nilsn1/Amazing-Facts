@@ -18,7 +18,9 @@
             android:layout_width="130dp"
             android:layout_height="130dp"
             android:padding="10dp"
-            android:src="@drawable/logo"></ImageView>
+            android:src="@drawable/logo">
+
+        </ImageView>
 
     </androidx.cardview.widget.CardView>
 
@@ -29,8 +31,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="80dp"
         android:fontFamily="@font/nunito_bold"
-        android:text="Amazing Facts"
-        android:textColor="@color/text_color"
+        android:text="@string/app_name"
+        android:textColor="@color/primary_text"
         android:textSize="23sp"
         android:textStyle="bold">
 
@@ -43,7 +45,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="50dp"
         android:fontFamily="@font/nunito_bold"
-        android:text="Daily new Facts"
+        android:text="Daily Amazing Facts"
         android:textColor="@color/text_color"
         android:textSize="16sp"
         android:textStyle="bold">

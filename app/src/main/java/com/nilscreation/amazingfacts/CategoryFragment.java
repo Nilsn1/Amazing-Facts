@@ -96,7 +96,7 @@ public class CategoryFragment extends Fragment {
     private void changeFragment() {
         FragmentManager fm = getActivity().getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-        MainFragment fragment = new MainFragment();
+        CategorySearchFragment fragment = new CategorySearchFragment();
         fragment.category(categoryName, getActivity());
         ft.replace(R.id.mainContainer, fragment);
         ft.commit();

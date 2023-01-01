@@ -64,7 +64,7 @@
                             android:layout_marginBottom="8dp"
                             android:fontFamily="@font/nunito_bold"
                             android:text="Mystery"
-                            android:textColor="@color/text_color"
+                            android:textColor="@color/primary_text"
                             android:textSize="17sp"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -110,7 +110,7 @@
                             android:layout_marginBottom="8dp"
                             android:fontFamily="@font/nunito_bold"
                             android:text="Animals"
-                            android:textColor="@color/text_color"
+                            android:textColor="@color/primary_text"
                             android:textSize="17sp"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -163,7 +163,7 @@
                             android:layout_marginBottom="8dp"
                             android:fontFamily="@font/nunito_bold"
                             android:text="Health &amp; Fitness"
-                            android:textColor="@color/text_color"
+                            android:textColor="@color/primary_text"
                             android:textSize="17sp"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -209,7 +209,7 @@
                             android:layout_marginBottom="8dp"
                             android:fontFamily="@font/nunito_bold"
                             android:text="Technology"
-                            android:textColor="@color/text_color"
+                            android:textColor="@color/primary_text"
                             android:textSize="17sp"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -262,7 +262,7 @@
                             android:layout_marginBottom="8dp"
                             android:fontFamily="@font/nunito_bold"
                             android:text="Psychology"
-                            android:textColor="@color/text_color"
+                            android:textColor="@color/primary_text"
                             android:textSize="17sp"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -308,7 +308,7 @@
                             android:layout_marginBottom="8dp"
                             android:fontFamily="@font/nunito_bold"
                             android:text="Geography"
-                            android:textColor="@color/text_color"
+                            android:textColor="@color/primary_text"
                             android:textSize="17sp"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -361,7 +361,7 @@
                             android:layout_marginBottom="8dp"
                             android:fontFamily="@font/nunito_bold"
                             android:text="Random"
-                            android:textColor="@color/text_color"
+                            android:textColor="@color/primary_text"
                             android:textSize="17sp"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -407,7 +407,7 @@
                             android:layout_marginBottom="8dp"
                             android:fontFamily="@font/nunito_bold"
                             android:text="History"
-                            android:textColor="@color/text_color"
+                            android:textColor="@color/primary_text"
                             android:textSize="17sp"
                             android:textStyle="bold" />
                     </LinearLayout>
