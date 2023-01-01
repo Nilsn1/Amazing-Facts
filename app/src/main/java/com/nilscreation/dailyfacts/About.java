@@ -1,4 +1,4 @@
-package com.nilscreation.amazingfacts;
+package com.nilscreation.dailyfacts;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,7 +12,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
-import com.nilscreation.amazingfacts.R;
+import com.nilscreation.dailyfacts.R;
 
 public class About extends AppCompatActivity {
 

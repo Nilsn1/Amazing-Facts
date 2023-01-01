@@ -7,7 +7,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.nilscreation.amazingfacts"
+        applicationId "com.nilscreation.dailyfacts"
         minSdkVersion 23
         targetSdkVersion 32
         versionCode 1
@@ -26,7 +26,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    namespace 'com.nilscreation.amazingfacts'
+    namespace 'com.nilscreation.dailyfacts'
 }
 
 dependencies {

@@ -1,4 +1,4 @@
-package com.nilscreation.amazingfacts;
+package com.nilscreation.dailyfacts;
 
 public class FactsModel {
 

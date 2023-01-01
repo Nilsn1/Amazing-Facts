@@ -1,4 +1,4 @@
-package com.nilscreation.amazingfacts;
+package com.nilscreation.dailyfacts;
 
 import static android.content.Context.MODE_PRIVATE;
 

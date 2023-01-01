@@ -1,7 +1,6 @@
-package com.nilscreation.amazingfacts;
+package com.nilscreation.dailyfacts;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.SwitchCompat;
@@ -12,7 +11,6 @@ import androidx.fragment.app.FragmentTransaction;
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
@@ -23,7 +21,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -131,7 +129,7 @@ public class HomeActivity extends AppCompatActivity {
         } else {
 //            super.onBackPressed();
 //            finish();
-            callDialog();
+            callExitDialog();
 
         }
 
@@ -143,36 +141,66 @@ public class HomeActivity extends AppCompatActivity {
 //        }
     }
 
-    private void callDialog() {
+    private void callExitDialog() {
 
-        //Dialog
-        AlertDialog.Builder exitdialog = new AlertDialog.Builder(HomeActivity.this);
-        exitdialog.setTitle("Exit");
-        exitdialog.setIcon(R.drawable.ic_info);
-        exitdialog.setMessage("Do you really want to exit?");
+        Dialog dialog = new Dialog(HomeActivity.this);
+        dialog.setContentView(R.layout.exit_dialog);
+//        dialog.setCancelable(true);
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
-        exitdialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        TextView btnCancel, btnYes, btnNO;
+        btnCancel = dialog.findViewById(R.id.btn_Cancel);
+        btnYes = dialog.findViewById(R.id.btn_Yes);
+        btnNO = dialog.findViewById(R.id.btn_No);
+        btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        btnNO.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+        btnYes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 finish();
             }
         });
 
-        exitdialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
+        dialog.show();
 
-        exitdialog.setNeutralButton("cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-
-        exitdialog.show();
+//        //Dialog
+//        AlertDialog.Builder exitdialog = new AlertDialog.Builder(HomeActivity.this);
+//        exitdialog.setTitle("Exit");
+//        exitdialog.setIcon(R.drawable.ic_info);
+//        exitdialog.setMessage("Do you really want to exit?");
+//
+//        exitdialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                finish();
+//            }
+//        });
+//
+//        exitdialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                dialog.dismiss();
+//            }
+//        });
+//
+//        exitdialog.setNeutralButton("cancel", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                dialog.dismiss();
+//            }
+//        });
+//
+//        exitdialog.show();
     }
 
     @Override

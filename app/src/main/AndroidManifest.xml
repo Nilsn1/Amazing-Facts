@@ -15,18 +15,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MovieList">
         <activity
-            android:name="com.nilscreation.amazingfacts.HomeActivity"
+            android:name="com.nilscreation.dailyfacts.HomeActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name="com.nilscreation.amazingfacts.About"
+            android:name="com.nilscreation.dailyfacts.About"
             android:exported="true" />
-        <activity android:name="com.nilscreation.amazingfacts.DetailActivity" />
+        <activity android:name="com.nilscreation.dailyfacts.DetailActivity" />
         <activity
-            android:name="com.nilscreation.amazingfacts.splash"
+            android:name="com.nilscreation.dailyfacts.splash"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -41,7 +41,7 @@
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.nilscreation.amazingfacts"
+            android:authorities="com.nilscreation.dailyfacts"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
