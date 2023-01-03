@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "611067469042",
+    "firebase_url": "https://daily-facts-c86d4-default-rtdb.firebaseio.com",
+    "project_id": "daily-facts-c86d4",
+    "storage_bucket": "daily-facts-c86d4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:611067469042:android:da224ca267e983fb64c46b",
+        "android_client_info": {
+          "package_name": "com.nilscreation.dailyfacts"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "611067469042-jpnb4qb3uuvq237m8e26n0h3iffusi6s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcaf5PhRz-FvnbZ8lIv5oJAu3M0dG_FRc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "611067469042-jpnb4qb3uuvq237m8e26n0h3iffusi6s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

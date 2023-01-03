@@ -64,7 +64,7 @@ public class FactsAdapter extends RecyclerView.Adapter<FactsAdapter.MovieHolder>
                 bundle.putString("text", fact.getText());
                 intent.putExtras(bundle);
 
-                holder.imageView.getContext().startActivity(intent);
+                holder.mainLayout.getContext().startActivity(intent);
             }
         });
 

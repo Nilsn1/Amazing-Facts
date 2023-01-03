@@ -28,6 +28,12 @@ import androidx.core.widget.ImageViewCompat;
 
 import com.bumptech.glide.Glide;
 import com.github.chrisbanes.photoview.PhotoView;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -45,8 +51,9 @@ public class DetailActivity extends AppCompatActivity {
     String title;
     MyDBHelper myDBHelper;
     SwitchCompat switchMode;
-
     Boolean fav = false;
+
+    private AdView mAdView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +84,21 @@ public class DetailActivity extends AppCompatActivity {
 //        main_text.setText(HtmlCompat.fromHtml(mText, 0));
         main_text.setText(mText);
         categoryName.setText(mCategory);
+
+        //Banner Ad Admob
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+
+        AdView adView = new AdView(this);
+        adView.setAdSize(AdSize.BANNER);
+        adView.setAdUnitId("ca-app-pub-9137303962163689/4078915078");
+
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
         textToSpeech = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
             @Override

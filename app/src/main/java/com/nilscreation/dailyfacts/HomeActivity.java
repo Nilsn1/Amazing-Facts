@@ -22,14 +22,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 public class HomeActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigation;
     SwitchCompat switchMode;
     networkChangListener networkChangListener = new networkChangListener();
+    FirebaseAnalytics mFirebaseAnalytics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +46,10 @@ public class HomeActivity extends AppCompatActivity {
         loadFragment(new MainFragment());
 
         nightMode();
+//        getAds();
+
+        // Obtain the FirebaseAnalytics instance.
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -252,4 +259,25 @@ public class HomeActivity extends AppCompatActivity {
 
         }
     }
+
+//    private void getAds() {
+//        FirebaseDatabase database = FirebaseDatabase.getInstance();
+//        DatabaseReference reference = database.getReference("admob");
+//
+//        reference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//
+//                String appid = snapshot.child("appid").getValue(String.class);
+//                String banner = snapshot.child("banner").getValue(String.class);
+//                String interstitial = snapshot.child("interstitial").getValue(String.class);
+//                Toast.makeText(HomeActivity.this, " " + banner + appid + interstitial, Toast.LENGTH_SHORT).show();
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+//    }
 }
