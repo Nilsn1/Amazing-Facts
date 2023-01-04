@@ -17,6 +17,9 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.rvadapter.AdmobNativeAdAdapter;
 
 import org.json.JSONArray;
@@ -52,6 +55,12 @@ public class MainFragment extends Fragment {
 
         factslist = new ArrayList<>();
         fetchMovies();
+        //INTERSTITIAL ADS INITILIZATION
+        MobileAds.initialize(getContext(), new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
 
         return view;
     }
