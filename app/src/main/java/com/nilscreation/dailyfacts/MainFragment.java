@@ -17,6 +17,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.google.rvadapter.AdmobNativeAdAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -128,7 +129,12 @@ public class MainFragment extends Fragment {
 
                     FactsAdapter adapter = new FactsAdapter(context, factslist, getActivity());
 
-                    recyclerView.setAdapter(adapter);
+//                    recyclerView.setAdapter(adapter);
+
+                    //////////
+                    AdmobNativeAdAdapter admobNativeAdAdapter = AdmobNativeAdAdapter.Builder.with("ca-app-pub-3940256099942544/2247696110", adapter,
+                            "medium").adItemInterval(3).build();
+                    recyclerView.setAdapter(admobNativeAdAdapter);
                 }
             }
         }, new Response.ErrorListener() {
