@@ -213,7 +213,7 @@ public class DetailActivity extends AppCompatActivity {
         intent.putExtra(Intent.EXTRA_STREAM, uri);
 
         intent.putExtra(Intent.EXTRA_TEXT, mTitle + "\n" + mText + "\n\n" +
-                "For more intestring facts download the app now. " +
+                "For more interesting facts download the app now. " +
                 "https://play.google.com/store/apps/details?id=" + getApplicationContext().getPackageName());
 
         intent.putExtra(Intent.EXTRA_SUBJECT, "Subject Here");
