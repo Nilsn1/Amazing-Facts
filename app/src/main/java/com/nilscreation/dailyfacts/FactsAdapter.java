@@ -106,19 +106,19 @@ public class FactsAdapter extends RecyclerView.Adapter<FactsAdapter.MovieHolder>
             }
         });
 
-        holder.category.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String categoryName = holder.category.getText().toString();
-//                Toast.makeText(holder.category.getContext(), "" + categoryName, Toast.LENGTH_SHORT).show();
-                FragmentManager fm = activity.getSupportFragmentManager();
-                FragmentTransaction ft = fm.beginTransaction();
-                MainFragment fragment = new MainFragment();
-                fragment.category(categoryName, activity);
-                ft.replace(R.id.mainContainer, fragment);
-                ft.commit();
-            }
-        });
+//        holder.category.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                String categoryName = holder.category.getText().toString();
+////                Toast.makeText(holder.category.getContext(), "" + categoryName, Toast.LENGTH_SHORT).show();
+//                FragmentManager fm = activity.getSupportFragmentManager();
+//                FragmentTransaction ft = fm.beginTransaction();
+//                MainFragment fragment = new MainFragment();
+//                fragment.category(categoryName, activity);
+//                ft.replace(R.id.mainContainer, fragment);
+//                ft.commit();
+//            }
+//        });
     }
 
     private void mInterstitialAd() {
