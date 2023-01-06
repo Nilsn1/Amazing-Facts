@@ -22,7 +22,7 @@
         android:text="OOPS!"
         android:textColor="@color/ic_color"
         android:textSize="40sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
     <TextView
         android:layout_width="match_parent"

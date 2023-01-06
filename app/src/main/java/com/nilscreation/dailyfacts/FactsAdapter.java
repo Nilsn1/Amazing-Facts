@@ -140,7 +140,6 @@ public class FactsAdapter extends RecyclerView.Adapter<FactsAdapter.MovieHolder>
                         mInterstitialAd = null;
                     }
                 });
-
     }
 
     @Override

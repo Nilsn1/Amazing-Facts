@@ -48,12 +48,10 @@
                 android:paddingStart="15dp"
                 android:paddingEnd="15dp"
                 android:paddingBottom="10dp"
-                android:text="6GB रैम वाला भारत का सबसे सस्ता फोन
-best phone under 10000 budget gaming phone"
+                android:text="This is demo text of daily facts app"
                 android:textColor="@color/primary_text"
                 android:textSize="20sp"
                 android:textStyle="bold" />
-
 
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"

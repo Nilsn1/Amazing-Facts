@@ -97,18 +97,19 @@ public class SettingsFragment extends Fragment {
 
                     startActivity(Intent.createChooser(intent, "Send Email"));
 
-
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-
             }
         });
 
         btnMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                String url = "https://play.google.com/store/apps/developer?id=Nils+Creation";
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(url));
+                startActivity(intent);
             }
         });
 

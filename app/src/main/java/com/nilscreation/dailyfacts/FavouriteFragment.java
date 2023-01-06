@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.android.volley.RequestQueue;
+import com.google.rvadapter.AdmobNativeAdAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,8 +62,10 @@ public class FavouriteFragment extends Fragment {
             factslist.add(factmodel);
 
             FactsAdapter adapter = new FactsAdapter(context, factslist, getActivity());
-
-            recyclerView.setAdapter(adapter);
+//                    recyclerView.setAdapter(adapter);
+            AdmobNativeAdAdapter admobNativeAdAdapter = AdmobNativeAdAdapter.Builder.with("ca-app-pub-3940256099942544/2247696110", adapter,
+                    "small").adItemInterval(3).build();
+            recyclerView.setAdapter(admobNativeAdAdapter);
 
         }
     }

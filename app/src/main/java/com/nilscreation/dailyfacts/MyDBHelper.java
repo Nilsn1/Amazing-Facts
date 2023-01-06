@@ -62,11 +62,6 @@ public class MyDBHelper extends SQLiteOpenHelper {
         ArrayList<FactsModel> facts = new ArrayList<>();
 
         while (cursor.moveToNext()) {
-//            FactsModel model = new FactsModel(url, category, title, text);
-//            model.poster = cursor.getString(1);
-//            model.category = cursor.getString(2);
-//            model.title = cursor.getString(3);
-//            model.text = cursor.getString(4);
 
             facts.add(new FactsModel(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3)));
         }

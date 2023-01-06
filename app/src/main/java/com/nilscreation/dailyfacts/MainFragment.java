@@ -43,12 +43,10 @@ public class MainFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_main, container, false);
 
         recyclerView = view.findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);
-//        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         requestQueue = VolleySingleton.getmInstance(getContext()).getRequestQueue();
@@ -61,7 +59,6 @@ public class MainFragment extends Fragment {
             public void onInitializationComplete(InitializationStatus initializationStatus) {
             }
         });
-
         return view;
     }
 
@@ -81,8 +78,6 @@ public class MainFragment extends Fragment {
                         String category = jsonObject.getString("category");
                         String title = jsonObject.getString("title");
                         String text = jsonObject.getString("text");
-
-//                        factslist.add(facts);
 
                         if (getCategory.equals("all")) {
                             FactsModel facts = new FactsModel(poster, category, title, text);
@@ -128,19 +123,15 @@ public class MainFragment extends Fragment {
                                 factslist.add(facts);
                             }
                         } else {
-                            Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
                         }
-
 
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
 
                     FactsAdapter adapter = new FactsAdapter(context, factslist, getActivity());
-
 //                    recyclerView.setAdapter(adapter);
-
-                    //////////
                     AdmobNativeAdAdapter admobNativeAdAdapter = AdmobNativeAdAdapter.Builder.with("ca-app-pub-3940256099942544/2247696110", adapter,
                             "medium").adItemInterval(3).build();
                     recyclerView.setAdapter(admobNativeAdAdapter);
@@ -149,7 +140,7 @@ public class MainFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -158,6 +149,5 @@ public class MainFragment extends Fragment {
 
     public void category(String category, Context context) {
         this.getCategory = category;
-
     }
 }

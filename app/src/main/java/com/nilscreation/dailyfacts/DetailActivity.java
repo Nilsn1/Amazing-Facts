@@ -1,12 +1,7 @@
 package com.nilscreation.dailyfacts;
 
-import static android.os.Environment.DIRECTORY_PICTURES;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.DownloadManager;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
@@ -46,7 +41,7 @@ public class DetailActivity extends AppCompatActivity {
     String[] permission = {"android.permission.WRITE_EXTERNAL_STORAGE", "android.permission.READ_EXTERNAL_STORAGE"};
     TextToSpeech textToSpeech;
     TextView main_title, main_text, categoryName;
-    ImageView btnBack, speakbtn, favourite, share, ttsSetting;
+    ImageView btnBack, speakbtn, favourite, share;
     String mPoster, mTitle, mText, mCategory;
     String title;
     MyDBHelper myDBHelper;
@@ -80,12 +75,10 @@ public class DetailActivity extends AppCompatActivity {
 
         Glide.with(this).load(mPoster).placeholder(R.drawable.app_logo).into(photoView);
         main_title.setText(mTitle);
-
-//        main_text.setText(HtmlCompat.fromHtml(mText, 0));
         main_text.setText(mText);
         categoryName.setText(mCategory);
 
-        //Banner Ad Admob
+        //Banner Ads Admob
         MobileAds.initialize(this, new OnInitializationCompleteListener() {
             @Override
             public void onInitializationComplete(InitializationStatus initializationStatus) {
@@ -161,7 +154,6 @@ public class DetailActivity extends AppCompatActivity {
                             (ContextCompat.getColor(DetailActivity.this, R.color.red)));
                     Toast.makeText(DetailActivity.this, "Added to Favourite", Toast.LENGTH_SHORT).show();
                     fav = true;
-
                 }
             }
         });
@@ -173,23 +165,8 @@ public class DetailActivity extends AppCompatActivity {
                 BitmapDrawable bitmapDrawable = (BitmapDrawable) photoView.getDrawable();
                 Bitmap bitmap = bitmapDrawable.getBitmap();
                 shareImageandText(bitmap);
-
             }
         });
-
-        //TTS settings
-//        ttsSetting.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                Intent intent = new Intent();
-//                intent.setAction("com.android.settings.TTS_SETTINGS");
-//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                startActivity(intent);
-//
-//            }
-//        });
-
     }
 
     private void readData() {
@@ -233,21 +210,16 @@ public class DetailActivity extends AppCompatActivity {
         Uri uri = getmageToShare(bitmap);
         Intent intent = new Intent(Intent.ACTION_SEND);
 
-        // putting uri of image to be shared
         intent.putExtra(Intent.EXTRA_STREAM, uri);
 
-        // adding text to share
         intent.putExtra(Intent.EXTRA_TEXT, mTitle + "\n" + mText + "\n\n" +
                 "For more intestring facts download the app now. " +
                 "https://play.google.com/store/apps/details?id=" + getApplicationContext().getPackageName());
 
-        // Add subject Here
         intent.putExtra(Intent.EXTRA_SUBJECT, "Subject Here");
 
-        // setting type to image
         intent.setType("image/png");
 
-        // calling startactivity() to share
         startActivity(Intent.createChooser(intent, "Share Via"));
     }
 
@@ -262,49 +234,11 @@ public class DetailActivity extends AppCompatActivity {
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
             outputStream.flush();
             outputStream.close();
-            uri = FileProvider.getUriForFile(this, "com.nilscreation.amazingfacts", file);
+            uri = FileProvider.getUriForFile(this, "com.nilscreation.dailyfacts", file);
         } catch (Exception e) {
             Toast.makeText(this, "" + e.getMessage(), Toast.LENGTH_LONG).show();
         }
         return uri;
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
-        if (requestCode == 80) {
-            if (grantResults[0] == getPackageManager().PERMISSION_GRANTED) {
-
-                BitmapDrawable bitmapDrawable = (BitmapDrawable) photoView.getDrawable();
-                Bitmap bitmap = bitmapDrawable.getBitmap();
-
-                try {
-                    DownloadManager downloadManager = null;
-                    downloadManager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
-                    Uri uri = Uri.parse(mPoster);
-                    DownloadManager.Request request = new DownloadManager.Request(uri);
-
-                    request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE)
-                            .setAllowedOverRoaming(false)
-                            .setTitle("Emoji_wallpapers_" + System.currentTimeMillis() + ".jpg")
-                            .setMimeType("image/jpeg")
-                            .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
-                            .setDestinationInExternalPublicDir(DIRECTORY_PICTURES, "Emoji_wallpapers_" + System.currentTimeMillis() + ".jpg");
-
-                    downloadManager.enqueue(request);
-
-                    Toast.makeText(getApplicationContext(), "Image Downloaded", Toast.LENGTH_SHORT).show();
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    Toast.makeText(this, "Save Failed", Toast.LENGTH_SHORT).show();
-                }
-
-            }
-        } else {
-            Toast.makeText(DetailActivity.this, "Download cancel", Toast.LENGTH_SHORT).show();
-        }
     }
 
     @Override
@@ -351,5 +285,4 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
     }
-
 }

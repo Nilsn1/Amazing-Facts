@@ -4,7 +4,6 @@ public class FactsModel {
 
     String poster, category, title, text;
 
-
     public FactsModel(String poster, String category, String title, String text) {
 
         this.poster = poster;

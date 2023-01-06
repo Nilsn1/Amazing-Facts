@@ -22,7 +22,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.analytics.FirebaseAnalytics;
@@ -42,13 +41,10 @@ public class HomeActivity extends AppCompatActivity {
         bottomNavigation = findViewById(R.id.bottonNavigationView);
         switchMode = findViewById(R.id.switchMode);
 
-        //default fragment
         loadFragment(new MainFragment());
 
         nightMode();
-//        getAds();
 
-        // Obtain the FirebaseAnalytics instance.
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -134,25 +130,14 @@ public class HomeActivity extends AppCompatActivity {
         } else if (fragInstance instanceof CategorySearchFragment) {
             loadFragment(new CategoryFragment());
         } else {
-//            super.onBackPressed();
-//            finish();
             callExitDialog();
-
         }
-
-//        if (bottomNavigation.getSelectedItemId() == R.id.home) {
-//            super.onBackPressed();
-//            finish();
-//        } else {
-//            bottomNavigation.setSelectedItemId(R.id.home);
-//        }
     }
 
     private void callExitDialog() {
 
         Dialog dialog = new Dialog(HomeActivity.this);
         dialog.setContentView(R.layout.exit_dialog);
-//        dialog.setCancelable(true);
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
         TextView btnCancel, btnYes, btnNO;
@@ -180,34 +165,6 @@ public class HomeActivity extends AppCompatActivity {
 
         dialog.show();
 
-//        //Dialog
-//        AlertDialog.Builder exitdialog = new AlertDialog.Builder(HomeActivity.this);
-//        exitdialog.setTitle("Exit");
-//        exitdialog.setIcon(R.drawable.ic_info);
-//        exitdialog.setMessage("Do you really want to exit?");
-//
-//        exitdialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                finish();
-//            }
-//        });
-//
-//        exitdialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                dialog.dismiss();
-//            }
-//        });
-//
-//        exitdialog.setNeutralButton("cancel", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                dialog.dismiss();
-//            }
-//        });
-//
-//        exitdialog.show();
     }
 
     @Override
@@ -251,33 +208,12 @@ public class HomeActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         dialog.dismiss();
                         onReceive(HomeActivity.this, intent);
+                        loadFragment(new MainFragment());
                     }
                 });
-
                 dialog.show();
             }
 
         }
     }
-
-//    private void getAds() {
-//        FirebaseDatabase database = FirebaseDatabase.getInstance();
-//        DatabaseReference reference = database.getReference("admob");
-//
-//        reference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//
-//                String appid = snapshot.child("appid").getValue(String.class);
-//                String banner = snapshot.child("banner").getValue(String.class);
-//                String interstitial = snapshot.child("interstitial").getValue(String.class);
-//                Toast.makeText(HomeActivity.this, " " + banner + appid + interstitial, Toast.LENGTH_SHORT).show();
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-//    }
 }
