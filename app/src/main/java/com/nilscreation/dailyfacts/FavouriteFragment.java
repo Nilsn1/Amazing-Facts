@@ -63,7 +63,7 @@ public class FavouriteFragment extends Fragment {
 
             FactsAdapter adapter = new FactsAdapter(context, factslist, getActivity());
 //                    recyclerView.setAdapter(adapter);
-            AdmobNativeAdAdapter admobNativeAdAdapter = AdmobNativeAdAdapter.Builder.with("ca-app-pub-3940256099942544/2247696110", adapter,
+            AdmobNativeAdAdapter admobNativeAdAdapter = AdmobNativeAdAdapter.Builder.with("ca-app-pub-9137303962163689/3884272678", adapter,
                     "small").adItemInterval(3).build();
             recyclerView.setAdapter(admobNativeAdAdapter);
 

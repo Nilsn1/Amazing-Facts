@@ -125,7 +125,7 @@ public class CategorySearchFragment extends Fragment {
 
                     FactsAdapter adapter = new FactsAdapter(context, factslist, getActivity());
 //                    recyclerView.setAdapter(adapter);
-                    AdmobNativeAdAdapter admobNativeAdAdapter = AdmobNativeAdAdapter.Builder.with("ca-app-pub-3940256099942544/2247696110", adapter,
+                    AdmobNativeAdAdapter admobNativeAdAdapter = AdmobNativeAdAdapter.Builder.with("ca-app-pub-9137303962163689/4766109503", adapter,
                             "small").adItemInterval(3).build();
                     recyclerView.setAdapter(admobNativeAdAdapter);
                 }

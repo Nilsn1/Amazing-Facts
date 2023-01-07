@@ -90,7 +90,7 @@ public class FactsAdapter extends RecyclerView.Adapter<FactsAdapter.MovieHolder>
                                 super.onAdDismissedFullScreenContent();
 
                                 mInterstitialAd = null;
-                                mInterstitialAd();
+//                                mInterstitialAd();
                             }
                         });
 
@@ -98,7 +98,7 @@ public class FactsAdapter extends RecyclerView.Adapter<FactsAdapter.MovieHolder>
 //                        Toast.makeText(context, "ad not ready", Toast.LENGTH_SHORT).show();
                     }
 
-                } else if (mCounter == 1) {
+                } else if ((mCounter % 2) == 1) {
                     mInterstitialAd();
                 } else {
 
@@ -124,7 +124,7 @@ public class FactsAdapter extends RecyclerView.Adapter<FactsAdapter.MovieHolder>
     private void mInterstitialAd() {
         AdRequest adRequest = new AdRequest.Builder().build();
 
-        InterstitialAd.load(activity, "ca-app-pub-3940256099942544/1033173712", adRequest,
+        InterstitialAd.load(activity, "ca-app-pub-9137303962163689/2088238601", adRequest,
                 new InterstitialAdLoadCallback() {
                     @Override
                     public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
