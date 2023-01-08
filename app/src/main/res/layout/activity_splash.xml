@@ -16,6 +16,7 @@
         app:cardElevation="5dp">
 
         <ImageView
+            android:id="@+id/applogo"
             android:layout_width="130dp"
             android:layout_height="130dp"
             android:padding="10dp"
@@ -26,6 +27,7 @@
     </androidx.cardview.widget.CardView>
 
     <TextView
+        android:id="@+id/appname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -40,6 +42,7 @@
     </TextView>
 
     <TextView
+        android:id="@+id/subtext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
