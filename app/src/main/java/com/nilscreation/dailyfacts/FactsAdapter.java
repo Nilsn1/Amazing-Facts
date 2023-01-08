@@ -146,7 +146,6 @@ public class FactsAdapter extends RecyclerView.Adapter<FactsAdapter.MovieHolder>
     public int getItemCount() {
         return factList.size();
     }
-
     public class MovieHolder extends RecyclerView.ViewHolder {
 
         ImageView imageView;
