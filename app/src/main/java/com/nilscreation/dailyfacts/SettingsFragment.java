@@ -55,7 +55,7 @@ public class SettingsFragment extends Fragment {
         btnShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String appUrl = "For more interesting facts download the app now. " + "https://play.google.com/store/apps/details?id=" + getActivity().getApplicationContext().getPackageName();
+                String appUrl = "For daily interesting facts download the app now." + "\nhttps://play.google.com/store/apps/details?id=" + getActivity().getApplicationContext().getPackageName();
 
                 Intent sharing = new Intent(Intent.ACTION_SEND);
                 sharing.setType("text/plain");
@@ -92,8 +92,8 @@ public class SettingsFragment extends Fragment {
                     intent.setData(Uri.parse("mailto:"));
                     String[] to = {"nilssonawanen1@gmail.com"};
                     intent.putExtra(Intent.EXTRA_EMAIL, to);
-                    intent.putExtra(Intent.EXTRA_SUBJECT, "EXAMPLE");
-                    intent.putExtra(Intent.EXTRA_TEXT, "TEXT");
+//                    intent.putExtra(Intent.EXTRA_SUBJECT, "");
+//                    intent.putExtra(Intent.EXTRA_TEXT, "");
 
                     startActivity(Intent.createChooser(intent, "Send Email"));
 

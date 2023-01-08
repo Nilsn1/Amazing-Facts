@@ -93,15 +93,6 @@ public class DetailActivity extends AppCompatActivity {
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
-        textToSpeech = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
-            @Override
-            public void onInit(int status) {
-                if (status == TextToSpeech.SUCCESS) {
-                    int lang = textToSpeech.setLanguage(Locale.forLanguageTag("ma"));
-                }
-            }
-        });
-
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -119,14 +110,14 @@ public class DetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String s = main_title.getText().toString() + main_text.getText().toString();
+                String s = main_title.getText().toString() + "." + main_text.getText().toString();
 
                 if (textToSpeech.isSpeaking()) {
                     textToSpeech.stop();
                     ImageViewCompat.setImageTintList(speakbtn, ColorStateList.valueOf
                             (ContextCompat.getColor(DetailActivity.this, R.color.ic_color)));
                 } else {
-                    int speech = textToSpeech.speak(s, TextToSpeech.QUEUE_FLUSH, null);
+                    textToSpeech.speak(s, TextToSpeech.QUEUE_FLUSH, null);
                     ImageViewCompat.setImageTintList(speakbtn, ColorStateList.valueOf
                             (ContextCompat.getColor(DetailActivity.this, R.color.primary)));
                 }
@@ -190,22 +181,6 @@ public class DetailActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    protected void onPause() {
-        if (textToSpeech != null) {
-            textToSpeech.stop();
-            textToSpeech.shutdown();
-            textToSpeech = null;
-        }
-        super.onPause();
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
-    }
-
     private void shareImageandText(Bitmap bitmap) {
         Uri uri = getmageToShare(bitmap);
         Intent intent = new Intent(Intent.ACTION_SEND);
@@ -213,8 +188,8 @@ public class DetailActivity extends AppCompatActivity {
         intent.putExtra(Intent.EXTRA_STREAM, uri);
 
         intent.putExtra(Intent.EXTRA_TEXT, mTitle + "\n" + mText + "\n\n" +
-                "For more interesting facts download the app now. " +
-                "https://play.google.com/store/apps/details?id=" + getApplicationContext().getPackageName());
+                "For more interesting facts download the app now." +
+                "\nhttps://play.google.com/store/apps/details?id=" + getApplicationContext().getPackageName());
 
         intent.putExtra(Intent.EXTRA_SUBJECT, "Subject Here");
 
@@ -242,13 +217,39 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onPause() {
+        if (textToSpeech != null) {
+            textToSpeech.stop();
+            textToSpeech.shutdown();
+//            textToSpeech = null;
+        }
+        super.onPause();
+    }
+
+    @Override
     public void onBackPressed() {
+        if (textToSpeech != null) {
+            textToSpeech.stop();
+            textToSpeech.shutdown();
+//            textToSpeech = null;
+        }
         super.onBackPressed();
+        finish();
     }
 
     @Override
     protected void onResume() {
         nightMode();
+
+        textToSpeech = new TextToSpeech(DetailActivity.this, new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if (status == TextToSpeech.SUCCESS) {
+//                    int lang = textToSpeech.setLanguage(Locale.forLanguageTag("en"));
+                    textToSpeech.setLanguage(Locale.US);
+                }
+            }
+        });
         super.onResume();
     }
 
