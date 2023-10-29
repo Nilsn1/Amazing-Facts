@@ -41,7 +41,7 @@ public class FavouriteFragment extends Fragment {
         requestQueue = VolleySingleton.getmInstance(getContext()).getRequestQueue();
         factslist = new ArrayList<>();
 
-        fetchData();
+//        fetchData();
 
         return view;
     }
@@ -68,5 +68,12 @@ public class FavouriteFragment extends Fragment {
             recyclerView.setAdapter(admobNativeAdAdapter);
 
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        factslist.clear();
+        fetchData();
     }
 }

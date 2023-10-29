@@ -64,7 +64,7 @@ public class MainFragment extends Fragment {
 
     private void fetchMovies() {
 
-        String url = "https://raw.githubusercontent.com/NilsCreation/DailyFacts/main/DailyFacts.json";
+        String url = "https://nilsn1.github.io/nilscreation/DailyFacts.json";
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
